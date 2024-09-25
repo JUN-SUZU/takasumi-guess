@@ -29,7 +29,6 @@ function calc() {
     for (let i = 0; i < n; i++) {
         percent *= 2/3;
     }
-    percent = Math.floor(percent);
     resText += "連続で負けることができる回数: " + (n - 1) + "回<br>その時の負け金: " + losses + "円<br>負ける確率: " + percent + "%";
     result.innerHTML = resText;
 }
