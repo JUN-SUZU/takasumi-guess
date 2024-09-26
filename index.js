@@ -14,7 +14,7 @@ function calc() {
     base *= (u * v);
     for (let i = 0; i < n - 1; i++) {
         base *= (1 + u * v);
-        text += `${i + 2}: ${Math.floor(base)} 負けた場合: -${Math.floor(plosses + base*u)} 勝った場合: ${Math.floor(x * 2.8 - plosses)}<br>`;
+        text += `${i + 2}: ${Math.floor(base)} 負けた場合: -${Math.floor(plosses + base*u)} 勝った場合: ${Math.floor(base * 2.8 - plosses)}<br>`;
         plosses += base*u;
     }
     for (let i = 0; i < n - 1; i++) {
