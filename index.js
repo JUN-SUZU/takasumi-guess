@@ -9,26 +9,22 @@ function calc() {
         return;
     }
     let losses = base * 3 / 2;
-    let resText = "1: " + base + "<br>";
-    base *= (molecule - denominator) / denominator;
-    base = Math.floor(base);
-    resText += "2: " + base + "<br>";
-    // log(底) {真数}
-    // log(molecule/denominator) {2*molecule*money/3*denominator*base}
-    let n = Math.floor(Math.log(2 * molecule * money / 3 / denominator / base) / Math.log(molecule / denominator));
-    for (let i = 2; i < n; i++) {
-        base *= molecule / denominator;
-        base = Math.floor(base);
-        resText += (i + 1) + ": " + base + "<br>";
+    let u = 3 / 2;
+    let v = molecule / denominator;
+    // let n = [(log(money)-log(u*base))/log(1+uv)]+1
+    let n = Math.floor((Math.log(money) - Math.log(u * base)) / Math.log(1 + u * v)) + 1;
+    let text = `1: ${base}<br>`;
+    base *= (u * v);
+    for (let i = 0; i < n - 1; i++) {
+        let x = base;
+        for (let j = 0; j < i; j++) {
+            x *= (1 + u * v);
+        }
+        text += `${i + 2}: ${Math.floor(x)}<br>`;
     }
-    for (let i = 2; i < n; i++) {
-        losses *= molecule / denominator;
-        losses = Math.floor(losses);
+    for (let i = 0; i < n - 1; i++) {
+        losses *= (1 + u * v);
     }
-    let percent = 100;
-    for (let i = 0; i < n; i++) {
-        percent *= 2/3;
-    }
-    resText += "連続で負けることができる回数: " + (n - 1) + "回<br>その時の負け金: " + losses + "円<br>負ける確率: " + percent + "%";
-    result.innerHTML = resText;
+    text += `損失: ${Math.floor(losses)}<br>`;
+    text += `継続できる回数: ${n}`;
 }
