@@ -4,10 +4,6 @@ function calc() {
     let denominator = document.getElementById('denominator').value;
     let money = document.getElementById('money').value;
     let result = document.getElementById('result');
-    if (molecule <= denominator) {
-        result.innerHTML = "分子は分母より大きい値を入力してください";
-        return;
-    }
     let losses = base * 3 / 2;
     let plosses = losses;
     let u = 3 / 2;
