@@ -37,4 +37,5 @@ function calc() {
     text += `損失: ${Math.floor(losses)}<br>`;
     text += `継続できる回数: ${n}回<br>`;
     text += `すべてを失う確率: ${percentage}%<br>`;
+    result.innerHTML = text;
 }
