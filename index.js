@@ -17,8 +17,8 @@ function calc() {
         for (let j = 0; j < i; j++) {
             x *= (1 + u * v);
         }
+        text += `${i + 2}: ${Math.floor(x)} 負けた場合: -${Math.floor(plosses + x*u)} 勝った場合: ${Math.floor(x * 2.8 - plosses)}<br>`;
         plosses += x*u;
-        text += `${i + 2}: ${Math.floor(x)} 負けた場合: ${Math.floor(plosses)}<br>`;
     }
     for (let i = 0; i < n - 1; i++) {
         losses *= (1 + u * v);
